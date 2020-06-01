@@ -6,6 +6,8 @@
   "private": true,
   "scripts": {
     "test": "gulp test",
+    "package": "gulp package",
+    "lint": "gulp tslint",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha ./build/compiled/test ./build/compiled/lib -- --recursive"
   },
   "repository": {
