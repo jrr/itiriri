@@ -28,7 +28,10 @@ jobs:
         run: npm run lint
 
       - name: coverage
-        run: npm run coverage
+        run: |
+          pwd
+          npm run coverage
+          find coverage
 
       - name: package
         run: npm run package
