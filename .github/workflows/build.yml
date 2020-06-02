@@ -32,6 +32,8 @@ jobs:
           pwd
           npm run coverage
           find coverage
+          file coverage/lcov.info
+          file ${{ github.workspace }}/coverage/lcov.info
 
       - name: package
         run: npm run package
