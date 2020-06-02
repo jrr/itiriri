@@ -5,7 +5,7 @@ import * as mocha from 'gulp-mocha';
 import * as replace from 'gulp-replace';
 import * as shell from 'gulp-shell';
 import * as sourcemaps from 'gulp-sourcemaps';
-import { default as tslint } from 'gulp-tslint';
+import * as eslint from 'gulp-eslint';
 import * as ts from 'gulp-typescript';
 import { default as uglify } from 'gulp-uglify-es';
 import { Gulpclass, MergedTask, SequenceTask, Task } from 'gulpclass';
@@ -50,16 +50,15 @@ export class Gulpfile {
   }
 
   /**
-   * Runs the tslint.
+   * Runs the eslint.
    */
   @Task()
-  tslint() {
-    return gulp.src(['./lib/**/*.ts', './test/**/*.ts', './examples/**/*.ts'])
-      .pipe(tslint({ formatter: 'stylish' }))
-      .pipe(tslint.report({
-        emitError: true,
-        summarizeFailureOutput: true,
-      }));
+  lint() {
+    return gulp
+      .src(['./lib/**/*.ts', './test/**/*.ts', './examples/**/*.ts'])
+      .pipe(eslint())
+      .pipe(eslint.format())
+      .pipe(eslint.failAfterError());
   }
 
   /**
